@@ -1,0 +1,8 @@
+
+.demo{
+    -fx-background-color: #ccc;
+}
+.demoText{
+    -fx-text-fill: #f00;
+    -fx-font-size:  20;
+}

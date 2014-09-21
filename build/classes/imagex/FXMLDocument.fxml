@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="500" prefWidth="720" 
+            xmlns:fx="http://javafx.com/fxml/1" 
+            fx:controller="imagex.FXMLDocumentController" 
+            style="display: block; -fx-background-image: url('images/background.jpg');" 
+>
+    <children>
+        <VBox fillWidth="true" prefHeight="500" prefWidth="720" spacing="10" alignment="CENTER" >
+            <VBox alignment="CENTER" prefWidth="720" >
+                <Label  fx:id="title" text="ImageX" textAlignment="CENTER" style="-fx-font-size: 35px;  -fx-font-weight: bold; -fx-text-fill: #2E2E2E; -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );" /> 
+                <Label  fx:id="subTitle" text="Resize your Android/iOS images in seconds" textAlignment="CENTER" style="-fx-font-size: 15px;  -fx-font-weight: bold; -fx-text-fill: #0B615E; -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );" />
+                <Separator  prefHeight="2" orientation="HORIZONTAL" style="-fx-background-color: #2E2E2E;"/>
+            </VBox>
+            <HBox alignment="CENTER" spacing="20" >
+                <TextField fx:id="inFilePath" prefWidth="550" style="-fx-border-width: 1;
+    -fx-border-color: #2E2E2E; -fx-font-size: 20px; padding:10px; -fx-text-fill:#0B615E;"  />
+                <Button  text="Browse" fx:id="btnBrowse" onAction="#openInDirecotryChooser" style="-fx-font-size: 20px; -fx-font-weight: bold; padding:10px; -fx-text-fill:#E0F8E6;  -fx-background-color:#088A4B;"/>
+            </HBox>
+            <GridPane  prefWidth="600" vgap="10" style="-fx-margin:5 25; -fx-border-width: 1;
+    -fx-border-color: #0B615E;">
+                <columnConstraints>
+                    <ColumnConstraints percentWidth="50"/>
+                    <ColumnConstraints percentWidth="50" />
+                </columnConstraints>  
+               
+                <Label text="Android"  prefWidth="360"  style="-fx-font-size: 20px; -fx-padding:5 20; -fx-font-weight: bold; -fx-text-fill: #E0F8E6; -fx-background-color: #0B615E;"
+                       GridPane.rowIndex="0"  GridPane.columnIndex="0" />
+                <Label text="iOS" prefWidth="360" style="-fx-font-size: 20px; -fx-padding:5 20; -fx-font-weight: bold; -fx-text-fill: #E0F8E6; -fx-background-color: #0B615E;"
+                       GridPane.rowIndex="0" GridPane.columnIndex="1" />
+             
+                <CheckBox text="ldpi&#10;(240 x 320)" fx:id="chkLdpi"
+                          GridPane.rowIndex="1"  GridPane.columnIndex="0" style="-fx-font-size: 15px; -fx-text-fill: #0B615E;"/>
+                <CheckBox text="Non-Retina&#10;(320 x 480)" fx:id="chkNonRetina"
+                          GridPane.rowIndex="1"  GridPane.columnIndex="1"  style="-fx-font-size: 15px; -fx-text-fill: #0B615E;"/>
+                
+                <CheckBox text="mdpi&#10;(320 x 480)" fx:id="chkMdpi"
+                          GridPane.rowIndex="2"  GridPane.columnIndex="0" style="-fx-font-size: 15px; -fx-text-fill: #E0F8E6;"/>
+                <CheckBox text="Retina&#10;(640 x 960)" fx:id="chkRetina"
+                          GridPane.rowIndex="2"  GridPane.columnIndex="1" style="-fx-font-size: 15px; -fx-text-fill: #E0F8E6;"/>
+                
+                <CheckBox text="hdpi&#10;(480 x 800)" fx:id="chkHdpi"
+                          GridPane.rowIndex="3"  GridPane.columnIndex="0" style="-fx-font-size: 15px; -fx-text-fill: #0B615E;"/>
+                <CheckBox text="Retina 4-Inch&#10;(640 x 1136)" fx:id="chkRetina4Inch"
+                          GridPane.rowIndex="3"  GridPane.columnIndex="1" style="-fx-font-size: 15px; -fx-text-fill: #0B615E;"/>
+                          
+                <CheckBox text="xhdpi&#10;(720 x 1280)" fx:id="chkXhdpi"
+                          GridPane.rowIndex="4"  GridPane.columnIndex="0" style="-fx-font-size: 15px; -fx-text-fill: #E0F8E6;"/>
+                
+                <CheckBox text="xxhdpi&#10;(1080 x 1920)" fx:id="chkXXhdpi"
+                          GridPane.rowIndex="5"  GridPane.columnIndex="0" style="-fx-font-size: 15px; -fx-text-fill: #0B615E;"/>
+            </GridPane>
+            <HBox alignment="CENTER" spacing="20">
+                <TextField fx:id="outFilePath" prefWidth="320" style="-fx-border-width: 1;
+    -fx-border-color: #2E2E2E; -fx-font-size: 20px; padding:10px;-fx-text-fill:#0B615E;"/>
+                <Button  text="Change" fx:id="btnChange" onAction="#openOutDirecotryChooser" style="-fx-font-size: 20px; -fx-font-weight: bold; padding:10px; -fx-text-fill:#E0F8E6;  -fx-background-color:#FF8000"/>
+                <Button  text="Start Conversion   " textAlignment="CENTER"  fx:id="btnStartConv" onAction="#startConversion" style="-fx-font-size: 20px; -fx-font-weight: bold; padding:10px; -fx-text-fill:#E0F8E6;  -fx-background-color:#088A4B; -fx-background-image: url('images/play.png'); -fx-background-size: 25 25; -fx-background-repeat: no-repeat; -fx-background-position:right;" />
+            </HBox>
+            <Label fx:id="interimMessage" style="-fx-font-size: 15px;  -fx-font-weight: bold; -fx-text-fill: #0B615E; -fx-effect: innershadow( three-pass-box , rgba(0,0,0,0.7) , 6, 0.0 , 0 , 2 );"/>
+            <ProgressBar layoutX="10" layoutY="485" prefWidth="1060" prefHeight="5" progress="0.0" fx:id="progress">
+                <effect>
+                    <javafx.scene.effect.ColorAdjust hue="-0.50"/>
+                </effect>
+            </ProgressBar>
+        </VBox>   
+         
+    </children>
+    
+</AnchorPane>
+
+<!-- <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
+        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="label" /> 
+         <ProgressBar layoutX="10" layoutY="485" prefWidth="1060" prefHeight="5" progress="50.0" fx:id="progress"/>  
+-->
